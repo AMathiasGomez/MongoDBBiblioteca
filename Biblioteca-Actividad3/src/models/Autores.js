@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const autorSchema = new mongoose.Schema({
     nombre: {
-        type: String, 
-        require: [true, "El nombre del autor es obligatorio"],
+        type: String,
+        required: [true, "El nombre del autor es obligatorio"],
         trim: true
     },
     nacionalidad: {
@@ -20,7 +20,6 @@ const autorSchema = new mongoose.Schema({
         type: [String],
         default: []
     }
-}, {timestamps: true})
+}, { timestamps: true });
 
-module.exports = mongoose.model("Autor", autorSchema)
-
+module.exports = mongoose.model("Autor", autorSchema);

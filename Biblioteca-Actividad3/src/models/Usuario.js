@@ -10,20 +10,20 @@ const usuarioSchema = new mongoose.Schema({
         type: String,
         required: [true, "El correo es obligatorio"],
         trim: true,
-        lowecase: true,
+        lowercase: true,
         unique: true,
-        match: [/^\S+@\S+\.\S+$/ , "El correo no tiene un formato valido"]
+        match: [/^\S+@\S+\.\S+$/, "El correo no tiene un formato valido"]
     },
     password: {
         type: String,
         required: [true, "La contraseña es obligatoria"],
-        minLength: [0, "La contraseña debe tener al menos 6 caracteres"]
+        minlength: [6, "La contraseña debe tener al menos 6 caracteres"]
     },
     rol: {
         type: String,
         enum: {
             values: ["miembro", "bibliotecario", "admin"],
-            nessage: "El rol '{VALUE' no es valido"
+            message: "El rol '{VALUE}' no es valido"
         },
         default: "miembro"
     },
@@ -38,13 +38,15 @@ const usuarioSchema = new mongoose.Schema({
         }
     },
     historial_prestamo: {
-        type: {
-            tipo: { type: String},
-            fecha: { type: Date, default: Date.now},
-            nota: { type: String }
-        }
-    }, 
-    default: []
+        type: [
+            {
+                tipo: { type: String },
+                fecha: { type: Date, default: Date.now },
+                nota: { type: String }
+            }
+        ],
+        default: []
+    }
 }, {
     timestamps: true,
 });

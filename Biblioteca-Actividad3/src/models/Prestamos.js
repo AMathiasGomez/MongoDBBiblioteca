@@ -1,13 +1,13 @@
-const mongoose = require("mongoose"),
+const mongoose = require("mongoose");
 
 const prestamoSchema = new mongoose.Schema({
     libro_id: {
-        type: mongoose.Schema.types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Libro",
         required: [true, "El prestamo debe estár asociado a un libro"]
     },
     usuario_id: {
-        type: mongoose.Schema.types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Usuario",
         required: [true, "El prestamo debe estár asociado a un usuario"]
     },
@@ -28,10 +28,10 @@ const prestamoSchema = new mongoose.Schema({
         type: String,
         enum: {
             values: ["activo", "devuelto", "finalizado"],
-            message: "El estado '{VALUE} no es válido'"
+            message: "El estado '{VALUE}' no es válido"
         },
         default: "activo"
     }
-}, {timestamps: true})
+}, { timestamps: true });
 
-module.exports = mongoose.model("Prestamo", prestamoSchema)
+module.exports = mongoose.model("Prestamo", prestamoSchema);

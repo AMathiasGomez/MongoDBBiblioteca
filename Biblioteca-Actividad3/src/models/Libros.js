@@ -1,4 +1,4 @@
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 
 const libroSchema = new mongoose.Schema({
     titulo: {
@@ -21,21 +21,21 @@ const libroSchema = new mongoose.Schema({
         min: [0, "El total de copias no puede ser negativo"]
     },
     copias_disponibles: {
-        type: Number, 
+        type: Number,
         required: [true, "Las copias disponibles son obligatorias"],
         min: [0, "Las copias disponibles no pueden ser negativas"],
         validate: {
             validator: function (valor) {
-                return valor < this.copies_total;
-            }, 
+                return valor <= this.copies_total;
+            },
             message: "Las copias disponibles no pueden ser más que el total de copias"
-        } 
+        }
     },
     generos: {
         type: String,
         trim: true,
         default: "General"
     }
-}, {timestamps: true})
+}, { timestamps: true });
 
-module.exports = mongoose.Schema("Libro", libroSchema)
+module.exports = mongoose.model("Libro", libroSchema);
