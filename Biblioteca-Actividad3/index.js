@@ -31,25 +31,19 @@ app.get("/", (req, res) => {
     });
 });
 
-// OJO: index.js está en la RAÍZ del proyecto, y las rutas viven en src/routes,
-// por eso aquí sí se usa "./src/routes/..." (con "src").
-
-const healthRoutes = require('./src/routes/salud');
-app.use('/api/v1', healthRoutes);
-
 const usuariosRoutes = require('./src/routes/usuarios.routes');
 app.use('/api/v1/usuarios', usuariosRoutes);
 
-const autoresRoutes = require('./src/routes/autores.routes');
+const autoresRoutes = require('./src/routes/autoresRoutes');
 app.use('/api/v1/autores', autoresRoutes);
 
-const librosRoutes = require('./src/routes/libros.routes');
+const librosRoutes = require('./src/routes/librosRoutes');
 app.use('/api/v1/libros', librosRoutes);
 
-const prestamosRoutes = require('./src/routes/prestamos.routes');
+const prestamosRoutes = require('./src/routes/prestamosRoutes');
 app.use('/api/v1/prestamos', prestamosRoutes);
 
-const estadoRoutes = require('./src/routes/estado.routes');
+const estadoRoutes = require('./src/routes/estadoRoutes');
 app.use('/api/v1', estadoRoutes);
 
 
