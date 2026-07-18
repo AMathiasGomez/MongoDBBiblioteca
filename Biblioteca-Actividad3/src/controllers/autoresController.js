@@ -1,4 +1,4 @@
-const Autor = require("../models/Autor");
+const Autor = require("../models/Autores");
 
 const obtenerAutores = async (req, res) => {
     try {

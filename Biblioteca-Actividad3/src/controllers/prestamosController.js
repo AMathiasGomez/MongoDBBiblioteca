@@ -1,4 +1,4 @@
-const Prestamo = require("../models/Prestamo");
+const Prestamo = require("../models/Prestamos");
 
 const obtenerPrestamos = async (req, res) => {
     try {

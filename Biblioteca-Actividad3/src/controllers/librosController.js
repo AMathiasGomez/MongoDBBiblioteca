@@ -1,4 +1,4 @@
-const Libro = require("../models/Libro");
+const Libro = require("../models/Libros");
 
 const obtenerLibros = async (req, res) => {
     try {
