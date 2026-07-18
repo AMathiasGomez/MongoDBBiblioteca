@@ -1,4 +1,4 @@
-const mongoose = require(mongoose);
+const mongoose = require("mongoose");
 
 const autorSchema = new mongoose.Schema({
     nombre: {
