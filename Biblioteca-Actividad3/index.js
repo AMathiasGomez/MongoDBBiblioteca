@@ -17,7 +17,10 @@ app.use(middlewareRevision);
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000,
+    family: 4,
+})
 .then(() => {
     console.log("Conexión exitosa a MongoDB");
 })
@@ -30,6 +33,10 @@ app.get("/", (req, res) => {
         mensaje: "Servidor funcionando correctamente"
     });
 });
+
+// OJO: index.js está en la RAÍZ del proyecto, y las rutas viven en src/routes,
+// por eso aquí se usa "./src/routes/..." (con "src"), con los nombres
+// EXACTOS de archivo (mayúsculas/minúsculas importan en Vercel/Linux).
 
 const usuariosRoutes = require('./src/routes/usuarios.routes');
 app.use('/api/v1/usuarios', usuariosRoutes);
